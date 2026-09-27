@@ -4,7 +4,14 @@ import re
 
 def technical_skills(text):
     pattern = r'Technical Skills:\s*(.+?)\.?$'
-    return re.findall(pattern, text, re.IGNORECASE)
+    match = re.search(pattern, text, re.IGNORECASE)
+    #return re.findall(pattern, text, re.IGNORECASE)
+    if match:
+        raw_skills = match.group(1).strip()
+        raw_skills = re.sub(r'\.$', '', raw_skills)
+        skills_list = [skill.strip() for skill in raw_skills.split(',') if skill.strip()]
+        return skills_list
+    return []
 
 # pattern = re.compile(r'Technical Skills: \s*([a-zA-Z0-9_]*)')
 #match = re.search(pattern, la, re.IGNORECASE)
@@ -12,18 +19,27 @@ def technical_skills(text):
 
 
 test_cases1 = [
-    ("Wednesday Addams 3 years of experience developing web applications. Technical Skills: JS, React.js, NodeJS, Postgres, Git.",
-     ["JS, React.js, NodeJS, Postgres, Git"]),
-     ("Mary Jane Watson 2 years of experience developing predictive models and data-processing pipelines. Technical Skills: Python, Pandas, NumPy, Scikit-learn, TensorFlow, SQL, Git.",
-     ["Python, Pandas, NumPy, Scikit-learn, TensorFlow, SQL, Git"]),
-    ("java python ruby Technical Skills: JS",
-     ["JS"]),
-    ("Technical Skills: JS",
-     ["JS"]),
-     ("name name name T T Technical Skills:Ruby",
-    ["Ruby"]),
+    (
+        "Wednesday Addams 3 years of experience developing web applications. Technical Skills: JS, React.js, NodeJS, Postgres, Git.",
+        ["JS", "React.js", "NodeJS", "Postgres", "Git"]
+    ),
+    (
+        "Mary Jane Watson 2 years of experience developing predictive models and data-processing pipelines. Technical Skills: Python, Pandas, NumPy, Scikit-learn, TensorFlow, SQL, Git.",
+        ["Python", "Pandas", "NumPy", "Scikit-learn", "TensorFlow", "SQL", "Git"]
+    ),
+    (
+        "java python ruby Technical Skills: JS",
+        ["JS"]
+    ),
+    (
+        "Technical Skills: JS",
+        ["JS"]
+    ),
+    (
+        "name name name T T Technical Skills:Ruby",
+        ["Ruby"]
+    ),
 ]
-
 
 for data, expected in test_cases1:
     result = technical_skills(data)
@@ -31,7 +47,7 @@ for data, expected in test_cases1:
     print(f"Resultado: {result}")
     assert result == expected, f"Fallo: esperado {expected}, obtenido {result}"
 
-print("Todos los tests pasaron.")
+print("Todos los tests pasaron")
 
 
 

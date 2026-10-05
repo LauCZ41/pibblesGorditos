@@ -41,6 +41,37 @@ test_cases1 = [
     ),
 ]
 
+
+def categorization(skills_list):
+    categories = {
+        "programming_languages": [],
+        "frameworks_and_libraries": [],
+        "databases": [],
+        "tools_and_technologies": [],
+        "other": [],
+    }
+
+    lang_pattern = (
+        r"^(?:JS|JavaScript|TypeScript|TS|Python|Java|Ruby|C\+\+|C#|Go|Rust|PHP|HTML|CSS|R)$"
+    )
+    framework_pattern = r"^(?:React(?:\.js)?|Angular|Vue(?:\.js)?|Node\.?js|Django|Spring Boot|Pandas|NumPy|Scikit-learn|sklearn|TensorFlow|PyTorch|Flask|FastAPI)$"
+    db_pattern = r"^(?:Postgres(?:QL)?|SQL|NoSQL|MongoDB|MySQL|SQLite|Oracle)$"
+    tool_pattern = r"^(?:Git|Docker|REST APIs?|Kubernetes|AWS|Linux)$"
+
+    for skill in skills_list:
+        if re.search(lang_pattern, skill, re.IGNORECASE):
+            categories["programming_languages"].append(skill)
+        elif re.search(framework_pattern, skill, re.IGNORECASE):
+            categories["frameworks_and_libraries"].append(skill)
+        elif re.search(db_pattern, skill, re.IGNORECASE):
+            categories["databases"].append(skill)
+        elif re.search(tool_pattern, skill, re.IGNORECASE):
+            categories["tools_and_technologies"].append(skill)
+        else:
+            categories["other"].append(skill)
+
+    return categories
+
 for data, expected in test_cases1:
     result = technical_skills(data)
     print(f"Entrada: {data[:40]}...")

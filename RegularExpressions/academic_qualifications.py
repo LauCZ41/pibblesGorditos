@@ -2,7 +2,7 @@ import re
 
 
 def academic_qualifications(text):
-    """
+    r"""
     # Academic qualifications pattern
     # Bachelor Master PhD Associate  the degree is one of these words
     # (of [A-Za-z]+)?                  maybe "of Something" follows like "of Science", it is optional
@@ -49,8 +49,9 @@ academic_tests = [
     ),
 ]
 
-for data, expected in academic_tests:
-    result = academic_qualifications(data)
-    print(f"Entrada: {data[:40]}...")
-    print(f"Resultado: {result}")
-    assert result == expected, f"Fallo: esperado {expected}, obtenido {result}"
+if __name__ == "__main__":
+    for data, expected in academic_tests:
+        result = academic_qualifications(data)
+        print(f"Entrada: {data[:40]}...")
+        print(f"Resultado: {result}")
+        assert result == expected, f"Fallo: esperado {expected}, obtenido {result}"

@@ -1,0 +1,60 @@
+{
+    "contact_information": {
+        "email": "wednesday.addams@nevermore.edu",
+        "phone": "(555) 123-4567",
+        "linkedin": "linkedin.com/in/wednesdayaddams"
+    },
+    "academic_qualifications": [
+        {
+            "degree": "Bachelor of Science",
+            "field": "Computer Science",
+            "institution": "Nevermore Academy",
+            "year": "2020"
+        },
+        {
+            "degree": "Master of Science",
+            "field": "Data Science",
+            "institution": "Jericho University",
+            "year": "2022"
+        }
+    ],
+    "professional_experience": [
+        {
+            "role": "Software Engineer",
+            "company": "Addams Family Enterprises",
+            "start_year": "2020",
+            "end_year": "2022"
+        },
+        {
+            "role": "Data Analyst",
+            "company": "Nevermore Labs",
+            "start_year": "2022",
+            "end_year": "Present"
+        }
+    ],
+    "technical_skills": {
+        "raw_skills": [
+            "JS",
+            "React.js",
+            "NodeJS",
+            "Postgres",
+            "Git"
+        ],
+        "categorized_skills": {
+            "programming_languages": [
+                "JS"
+            ],
+            "frameworks_and_libraries": [
+                "React.js",
+                "NodeJS"
+            ],
+            "databases": [
+                "Postgres"
+            ],
+            "tools_and_technologies": [
+                "Git"
+            ],
+            "other": []
+        }
+    }
+}

@@ -69,54 +69,56 @@ def categorization(skills_list):
     return categories
 
 
-for data, expected in test_cases1:
-    result = technical_skills(data)
-    print(f"Entrada: {data[:40]}...")
-    print(f"Resultado: {result}")
-    assert result == expected, f"Fallo: esperado {expected}, obtenido {result}"
+if __name__ == "__main__":
+    for data, expected in test_cases1:
+        result = technical_skills(data)
+        print(f"Entrada: {data[:40]}...")
+        print(f"Resultado: {result}")
+        assert result == expected, f"Fallo: esperado {expected}, obtenido {result}"
+
+    test_cases_integration = [
+        (
+            "Wednesday Addams 3 years of experience developing web applications. Technical Skills: JS, React.js, NodeJS, Postgres, Git.",
+            {
+                "programming_languages": ["JS"],
+                "frameworks_and_libraries": ["React.js", "NodeJS"],
+                "databases": ["Postgres"],
+                "tools_and_technologies": ["Git"],
+                "other": [],
+            }
+        ),
+        (
+            "Mary Jane Watson 2 years of experience. Technical Skills: Python, Pandas, NumPy, Scikit-learn, TensorFlow, SQL, Git.",
+            {
+                "programming_languages": ["Python"],
+                "frameworks_and_libraries": ["Pandas", "NumPy", "Scikit-learn", "TensorFlow"],
+                "databases": ["SQL"],
+                "tools_and_technologies": ["Git"],
+                "other": [],
+            }
+        ),
+        (
+            "Peter Parker Technical Skills: Python, Docker, Figma.",
+            {
+                "programming_languages": ["Python"],
+                "frameworks_and_libraries": [],
+                "databases": [],
+                "tools_and_technologies": ["Docker"],
+                "other": ["Figma"],
+            }
+        ),
+    ]
+
+    print("technical_skills + categorization")
+    for text, expected_categories in test_cases_integration:
+        skills = technical_skills(text)
+        categories = categorization(skills)
+        print(f"Entrada: {text[:40]}...")
+        print(f"Habilidades extraídas: {skills}")
+        print(f"Categorías: {categories}")
+        assert categories == expected_categories, f"Fallo: esperado {expected_categories}, obtenido {categories}"
 
 
-test_cases_integration = [
-    (
-        "Wednesday Addams 3 years of experience developing web applications. Technical Skills: JS, React.js, NodeJS, Postgres, Git.",
-        {
-            "programming_languages": ["JS"],
-            "frameworks_and_libraries": ["React.js", "NodeJS"],
-            "databases": ["Postgres"],
-            "tools_and_technologies": ["Git"],
-            "other": [],
-        }
-    ),
-    (
-        "Mary Jane Watson 2 years of experience. Technical Skills: Python, Pandas, NumPy, Scikit-learn, TensorFlow, SQL, Git.",
-        {
-            "programming_languages": ["Python"],
-            "frameworks_and_libraries": ["Pandas", "NumPy", "Scikit-learn", "TensorFlow"],
-            "databases": ["SQL"],
-            "tools_and_technologies": ["Git"],
-            "other": [],
-        }
-    ),
-    (
-        "Peter Parker Technical Skills: Python, Docker, Figma.",
-        {
-            "programming_languages": ["Python"],
-            "frameworks_and_libraries": [],
-            "databases": [],
-            "tools_and_technologies": ["Docker"],
-            "other": ["Figma"],
-        }
-    ),
-]
-
-print("technical_skills + categorization")
-for text, expected_categories in test_cases_integration:
-    skills = technical_skills(text)
-    categories = categorization(skills)
-    print(f"Entrada: {text[:40]}...")
-    print(f"Habilidades extraídas: {skills}")
-    print(f"Categorías: {categories}")
-    assert categories == expected_categories, f"Fallo: esperado {expected_categories}, obtenido {categories}"
 
 
 

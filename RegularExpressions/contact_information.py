@@ -2,7 +2,7 @@ import re
 
 
 def contact_information(text):
-    """
+    r"""
     # Email pattern
     # [\w.-]+   whatever comes before the @
     # @         the @ symbol
@@ -54,8 +54,11 @@ contact_tests = [
          "linkedin": None}
     ),
 ]
-for data, expected in contact_tests:
-    result = contact_information(data)
-    print(f"Entrada: {data[:40]}...")
-    print(f"Resultado: {result}")
-    assert result == expected, f"Fallo: esperado {expected}, obtenido {result}"
+
+if __name__ == "__main__":
+    for data, expected in contact_tests:
+        result = contact_information(data)
+        print(f"Entrada: {data[:40]}...")
+        print(f"Resultado: {result}")
+        assert result == expected, f"Fallo: esperado {expected}, obtenido {result}"
+

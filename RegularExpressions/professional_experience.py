@@ -2,7 +2,7 @@ import re
 
 
 def professional_experience(text):
-    """
+    r"""
     #  Professional experience pattern
     # [A-Z][A-Za-z\s]+?         the job title, starts with a capital letter
     # at                        the literal word connecting title and company
@@ -45,8 +45,10 @@ experience_tests = [
     ),
 ]
 
-for data, expected in experience_tests:
-    result = professional_experience(data)
-    print(f"Input: {data[:40]}...")
-    print(f"Result: {result}")
-    assert result == expected, f"FAIL: waiting {expected}, obtained {result}"
+if __name__ == "__main__":
+    for data, expected in experience_tests:
+        result = professional_experience(data)
+        print(f"Input: {data[:40]}...")
+        print(f"Result: {result}")
+        assert result == expected, f"FAIL: waiting {expected}, obtained {result}"
+

@@ -47,12 +47,10 @@ def categorization(skills_list):
         "other": [],
     }
 
-    lang_pattern = (
-        r"^(?:JS|JavaScript|TypeScript|TS|Python|Java|Ruby|C\+\+|C#|Go|Rust|PHP|HTML|CSS|R)$"
-    )
-    framework_pattern = r"^(?:React(?:\.js)?|Angular|Vue(?:\.js)?|Node\.?js|Django|Spring Boot|Pandas|NumPy|Scikit-learn|sklearn|TensorFlow|PyTorch|Flask|FastAPI)$"
-    db_pattern = r"^(?:Postgres(?:QL)?|SQL|NoSQL|MongoDB|MySQL|SQLite|Oracle)$"
-    tool_pattern = r"^(?:Git|Docker|REST APIs?|Kubernetes|AWS|Linux)$"
+    lang_pattern = r"^(?:JS|JavaScript|TypeScript|TS|Python|Java|Ruby|C\+\+|C#|Go|Rust|PHP|HTML|CSS|R|Bash|PowerShell|Scala)$"
+    framework_pattern = r"^(?:React(?:\.js)?|Angular|Vue(?:\.js)?|Node\.?js|Django|Spring Boot|Pandas|NumPy|Scikit-learn|sklearn|TensorFlow|PyTorch|Flask|FastAPI|(?:Apache )?Spark|PySpark|(?:Apache )?Airflow|dbt)$"
+    db_pattern = r"^(?:Postgres(?:QL)?|SQL|NoSQL|MongoDB|MySQL|SQLite|Oracle|Snowflake|BigQuery|Redshift)$"
+    tool_pattern = r"^(?:Git|Docker|REST APIs?|Kubernetes|AWS|Linux|Kali Linux|Wireshark|Nmap|Metasploit|Burp Suite|Nessus|Snort|Splunk|SIEM|Kafka|Hadoop|ETL)$"
 
     for skill in skills_list:
         if re.search(lang_pattern, skill, re.IGNORECASE):
@@ -104,6 +102,16 @@ if __name__ == "__main__":
                 "frameworks_and_libraries": [],
                 "databases": [],
                 "tools_and_technologies": ["Docker"],
+                "other": ["Figma"],
+            }
+        ),
+        (
+            "Ada Torres Technical Skills: Python, Kali Linux, Splunk, Figma.",
+            {
+                "programming_languages": ["Python"],
+                "frameworks_and_libraries": [],
+                "databases": [],
+                "tools_and_technologies": ["Kali Linux", "Splunk"],
                 "other": ["Figma"],
             }
         ),

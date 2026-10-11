@@ -4,12 +4,12 @@ import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from normalization.builder import (
+from Normalization.builder import (
     build_qualification_specs,
     build_union_spec,
     to_word,
 )
-from normalization.catalog import CATALOG, END_MARKER
+from Normalization.catalog import CATALOG, END_MARKER
 
 
 class UnionTransducerTests(unittest.TestCase):

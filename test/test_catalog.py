@@ -4,7 +4,7 @@ import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from normalization.catalog import CATALOG, END_MARKER, validate_catalog
+from Normalization.catalog import CATALOG, END_MARKER, validate_catalog
 
 
 class CatalogTests(unittest.TestCase):

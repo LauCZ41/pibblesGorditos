@@ -16,6 +16,23 @@ PROFILES = {
         ("Database", ["SQL", "POSTGRESQL", "MYSQL", "MONGODB", "NOSQL"]),
         ("Version control", ["GIT"]),
     ],
+     "CYBERSECURITY_ANALYST": [
+        ("Operating systems", ["LINUX", "KALI_LINUX"]),
+        ("Scripting", ["PYTHON", "BASH", "POWERSHELL"]),
+        ("Network analysis", ["WIRESHARK", "NMAP", "SNORT"]),
+        ("Pentesting and scanning", ["BURP_SUITE", "METASPLOIT", "NESSUS"]),
+        ("Monitoring", ["SPLUNK", "SIEM"]),
+        ("Standards", ["OWASP"]),
+    ],
+    "DATA_ENGINEER": [
+        ("Languages", ["PYTHON", "SQL", "SCALA"]),
+        ("Storage", ["POSTGRESQL", "MYSQL", "MONGODB", "SNOWFLAKE", "BIGQUERY", "REDSHIFT"]),
+        ("Processing", ["SPARK", "HADOOP", "KAFKA"]),
+        ("Orchestration", ["AIRFLOW", "DBT", "ETL"]),
+        ("Cloud", ["AWS"]),
+        ("Containers", ["DOCKER"]),
+        ("Version control", ["GIT"]),
+    ],
 }
 
 

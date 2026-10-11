@@ -1,3 +1,17 @@
+"""Catalog of canonical qualifications and their textual variants.
+
+Each canonical qualification (e.g. ``JAVASCRIPT``) owns a set of variants
+(``js``, ``javascript``, ``java script``...). Variants are written in lower
+case: the transducers built from this catalog are case-insensitive.
+
+The catalog is the single source of truth for Stage 2. Transducers, docs and
+tests are all generated from it, so adding a qualification only requires
+adding an entry here.
+"""
+
+# Reserved symbol appended to every token; the transducer emits the canonical
+# name when it reads it (see normalization/builder.py). '#' is not used
+# because skills such as C# contain it.
 END_MARKER = "\u22a3"  # ⊣
 
 # canonical name -> variants (lower case, as they may appear in a résumé)
@@ -47,3 +61,38 @@ CATALOG = {
     "AWS": ["aws", "amazon web services"],
     "LINUX": ["linux"],
 }
+
+def validate_catalog(catalog):
+    """Check that a catalog defines a deterministic normalization.
+
+    A variant that belongs to two canonical names would make the transducer
+    ambiguous (one input, two possible outputs), so it is rejected. Variants
+    must also be non-empty, lower case and free of the reserved end marker.
+
+    Raises ValueError describing the first problem found.
+    """
+    seen = {}
+    for canonical, variants in catalog.items():
+        if not variants:
+            raise ValueError(f"{canonical}: has no variants")
+        for variant in variants:
+            if not variant:
+                raise ValueError(f"{canonical}: empty variant")
+            if variant != variant.lower():
+                raise ValueError(
+                    f"{canonical}: variant {variant!r} must be lower case "
+                    "(transducers are case-insensitive)"
+                )
+            if END_MARKER in variant:
+                raise ValueError(
+                    f"{canonical}: variant {variant!r} uses the reserved "
+                    "end marker"
+                )
+            if variant in seen and seen[variant] != canonical:
+                raise ValueError(
+                    f"variant {variant!r} is ambiguous: it maps to both "
+                    f"{seen[variant]} and {canonical}"
+                )
+            seen[variant] = canonical
+    return True
+

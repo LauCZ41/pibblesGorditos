@@ -1,8 +1,8 @@
 import json
-from contact_information import contact_information
-from academic_qualifications import academic_qualifications
-from professional_experience import professional_experience
-from technicalSkills import technical_skills, categorization
+from RegularExpressions.contact_information import contact_information
+from RegularExpressions.academic_qualifications import academic_qualifications
+from RegularExpressions.professional_experience import professional_experience
+from RegularExpressions.technicalSkills import technical_skills, categorization
 
 
 def extract_complete_resume_info(resume_text):

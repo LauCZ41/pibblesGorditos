@@ -4,11 +4,11 @@ import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from normalization.builder import build_qualification_specs, build_union_spec
-from normalization.catalog import CATALOG
+from Normalization.builder import build_qualification_specs, build_union_spec
+from Normalization.catalog import CATALOG
 
 try:
-    from normalization.pyformlang_fst import PyformlangTransducer
+    from Normalization.fst import PyformlangTransducer
 
     HAS_PYFORMLANG = True
 except ImportError:  # pyformlang is not installed
@@ -36,7 +36,7 @@ class PyformlangTransducerTests(unittest.TestCase):
         self.assertIsNone(self.union.translate("reac"))
 
     def test_agrees_with_reference_simulation(self):
-        from normalization.builder import to_word
+        from Normalization.builder import to_word
 
         probes = ["JS", "ReactJS", "node js", "Tensor Flow", "sklearn",
                   "unknown", "git", "GIT", "pyt", "springboot"]

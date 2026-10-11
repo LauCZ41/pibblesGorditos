@@ -17,7 +17,8 @@ def normalize_resume(extracted_info, normalizer):
         "sorted_by_profile": normalizer.sorted_by_profile(result.normalized),
     }
 
-
+"""Dear teammates, I appreciate you. :)
+"""
 SAMPLES = {
     "Wednesday Addams": (
         "Wednesday Addams 3 years of experience developing web applications. "
@@ -27,6 +28,14 @@ SAMPLES = {
         "Mary Jane Watson 2 years of experience developing predictive models "
         "and data-processing pipelines. Technical Skills: Python, Pandas, "
         "NumPy, Scikit-learn, TensorFlow, SQL, Git."
+    ),
+    "Laura Cardenas": (
+        "Laura Cardenas 4 years of experience in security operations. "
+        "Technical Skills: Splunk, OWASP, Nmap, Wireshark, Python, Kali Linux, Burp Suite."
+    ),
+    "Juan Rojas": (
+        "Juan Rojas 3 years of experience building data pipelines. "
+        "Technical Skills: Git, Airflow, Kafka, Spark, Python, SQL, Snowflake, Docker."
     ),
 }
 

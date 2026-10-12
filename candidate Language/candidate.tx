@@ -1,0 +1,58 @@
+Candidate:
+    'candidate' name=STRING '{'
+        contact=Contact
+        experience=Experience
+        education=Education
+        skills=Skills
+        classification=Classification
+    '}'
+;
+
+Contact:
+    'contact' '{'
+        'email' ':' email=EMAIL
+        ('phone' ':' phone=PHONE)?
+        ('linkedin' ':' linkedin=LINKEDIN)?
+    '}'
+;
+
+Experience:
+    'experience' '{' jobs*=Job '}'
+;
+
+Job:
+    role=STRING 'at' company=STRING 'from' start_year=YEAR 'to' end_year=EndYear
+;
+
+Education:
+    'education' '{' degrees*=Degree '}'
+;
+
+Degree:
+    title=STRING 'in' field=STRING 'at' institution=STRING 'year' year=YEAR
+;
+
+Skills:
+    'skills' ':' names+=SKILL[',']
+;
+
+Classification:
+    'classification' '{' accepted*=AcceptedProfile '}'
+;
+
+AcceptedProfile:
+    profile=PROFILE 'accepted'
+;
+
+EndYear: YEAR | 'present';
+
+PROFILE:
+    'FULL_STACK_DEVELOPER' | 'MACHINE_LEARNING_ENGINEER' |
+    'CYBERSECURITY_ANALYST' | 'DATA_ENGINEER'
+;
+
+EMAIL: /[\w.-]+@[\w.-]+\.\w+/;
+PHONE: /(?:\(?\+?\d+\)?[-.\s]?)?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}/;
+LINKEDIN: /linkedin\.com\/in\/[\w-]+/;
+YEAR: /\d{4}(?!\d)/;
+SKILL: /[A-Z][A-Z0-9_]*/;

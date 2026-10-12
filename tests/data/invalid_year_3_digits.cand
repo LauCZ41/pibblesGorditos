@@ -1,0 +1,19 @@
+candidate "Wednesday Addams" {
+  contact {
+    email: wednesday.addams@nevermore.edu
+    phone: (555) 123-4567
+    linkedin: linkedin.com/in/wednesdayaddams
+  }
+  experience {
+    "Software Engineer" at "Addams Family Enterprises" from 202 to 2022
+    "Data Analyst" at "Nevermore Labs" from 2022 to present
+  }
+  education {
+    "Bachelor of Science" in "Computer Science" at "Nevermore Academy" year 2020
+    "Master of Science" in "Data Science" at "Jericho University" year 2022
+  }
+  skills: JAVASCRIPT, REACT, NODE_JS, POSTGRESQL, GIT
+  classification {
+    FULL_STACK_DEVELOPER accepted
+  }
+}

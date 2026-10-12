@@ -1,0 +1,12 @@
+candidate "Test Candidate" {
+  contact {
+    email: test@example.com
+  }
+  experience {
+  }
+  education {
+  }
+  skills: GIT
+  classification {
+  }
+}

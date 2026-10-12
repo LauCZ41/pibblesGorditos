@@ -23,3 +23,30 @@ def format_report(result):
     for profile, accepted in result["profiles"].items():
         lines.append(f"{profile}: {'ACCEPTED' if accepted else 'REJECTED'}")
     return "\n".join(lines)
+
+
+MENU = "\nResumeLens\n1. Analyze a résumé from a text file\n0. Exit"
+
+
+def run(ask=input, show=print):
+    """Text menu. `ask` and `show` are parameters so the tests can replace input and print."""
+    while True:
+        show(MENU)
+        option = ask("Option: ").strip()
+        if option == "0":
+            return
+        if option == "1":
+            path = ask("File path: ").strip()
+            try:
+                with open(path, encoding="utf-8") as handle:
+                    text = handle.read()
+            except OSError:
+                show("File not found.")
+                continue
+            show(format_report(analyze(text)))
+        else:
+            show("Invalid option.")
+
+
+if __name__ == "__main__":
+    run()

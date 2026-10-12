@@ -1,0 +1,1 @@
+Juan Rojas Contact Information: juan.rojas@example.com. Professional Experience: Data Engineer at Pipeline Works (2021-Present). Technical Skills: Git, Airflow, Kafka, Spark, Python, SQL, Snowflake, Docker.

@@ -1,6 +1,6 @@
 from Automata.classifier import classify
 from Normalization.pipeline import SkillNormalizer
-from normalize_resume import normalize_resume
+from normalize_resume import SAMPLES, normalize_resume
 from resume_extractor import extract_complete_resume_info
 
 NORMALIZER = SkillNormalizer()
@@ -8,8 +8,10 @@ NORMALIZER = SkillNormalizer()
 
 def analyze(text):
     """Runs stages 1 to 3 on a résumé text."""
-    normalized = normalize_resume(extract_complete_resume_info(text), NORMALIZER)
+    info = extract_complete_resume_info(text)
+    normalized = normalize_resume(info, NORMALIZER)
     return {
+        "info": info,
         "qualifications": normalized["normalized_skills"],
         "unrecognized": normalized["unrecognized_skills"],
         "profiles": classify(normalized["sorted_by_profile"]),
@@ -25,7 +27,7 @@ def format_report(result):
     return "\n".join(lines)
 
 
-MENU = "\nResumeLens\n1. Analyze a résumé from a text file\n0. Exit"
+MENU = "\nResumeLens\n1. Analyze a résumé from a text file\n2. Analyze the sample résumés\n0. Exit"
 
 
 def run(ask=input, show=print):
@@ -44,6 +46,9 @@ def run(ask=input, show=print):
                 show("File not found.")
                 continue
             show(format_report(analyze(text)))
+        elif option == "2":
+            for name, text in SAMPLES.items():
+                show(f"\n{name}\n{format_report(analyze(text))}")
         else:
             show("Invalid option.")
 

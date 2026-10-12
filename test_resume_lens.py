@@ -41,6 +41,12 @@ class MenuTests(unittest.TestCase):
             output = self.run_menu(["1", path, "0"])
         self.assertIn("FULL_STACK_DEVELOPER: ACCEPTED", output)
 
+    def test_sample_resumes_are_analyzed_with_their_names(self):
+        output = self.run_menu(["2", "0"])
+        for name in SAMPLES:
+            self.assertIn(name, output)
+        self.assertEqual(output.count("ACCEPTED"), len(SAMPLES))
+
     def test_missing_file_and_invalid_option_do_not_stop_the_menu(self):
         output = self.run_menu(["1", "no_such_file.txt", "7", "0"])
         self.assertIn("File not found.", output)

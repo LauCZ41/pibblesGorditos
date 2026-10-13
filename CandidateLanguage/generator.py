@@ -3,7 +3,6 @@ def quote(text):
 
 
 def build_profile(name, result):
-    """Writes the candidate profile in the DSL from the output of resume_lens.analyze."""
     info = result["info"]
     lines = [f"candidate {quote(name)} {{", "  contact {"]
     for field in ("email", "phone", "linkedin"):

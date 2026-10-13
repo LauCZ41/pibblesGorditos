@@ -7,11 +7,10 @@ sys.path.insert(0, ROOT)
 
 from CandidateLanguage.generator import build_profile
 from CandidateLanguage.parser import validate
-from resume_lens import analyze
+from main import analyze
 
 DATA = os.path.join(ROOT, "tests", "data")
 
-# file -> (candidate name, must the generated profile be valid?)
 RESUMES = {
     "resume_full_stack_with_contact.txt": ("Wednesday Addams", True),
     "resume_data_engineer_with_email_only.txt": ("Juan Rojas", True),

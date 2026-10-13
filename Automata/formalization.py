@@ -1,9 +1,3 @@
-"""Generates docs/stage3_formalization.md and the transition diagrams of the automata.
-
-Run from the repository root:  python -m Automata.formalization
-The diagrams are rendered with Graphviz (the `dot` command).
-"""
-
 import os
 import subprocess
 
@@ -20,7 +14,6 @@ def state_number(name):
 
 
 def edges(automaton):
-    """{(state, next state): [qualifications]} sorted by state."""
     grouped = {}
     for state, moves in automaton.to_dict().items():
         for symbol, target in moves.items():

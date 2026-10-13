@@ -1,10 +1,3 @@
-"""Qualification pattern of each profile: the ordered steps read by its automaton.
-
-A step is (name, qualifications, required). The automaton advances one state
-for each required step that finds one of its qualifications in the input.
-The steps must follow the profile order of Normalization/ordering.py.
-"""
-
 PATTERNS = {
     "FULL_STACK_DEVELOPER": [
         ("Frontend language", ["JAVASCRIPT", "TYPESCRIPT"], True),
@@ -44,5 +37,4 @@ PATTERNS = {
 
 
 def pattern_alphabet(steps):
-    """Sigma of the automaton: every qualification named by the pattern."""
     return [qualification for _, qualifications, _ in steps for qualification in qualifications]

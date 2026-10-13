@@ -1,10 +1,3 @@
-"""Stage 3 - builds the DFA of a profile pattern.
-
-Q = {q0, ..., qk}, k = number of required steps. State qi means "the first i
-required steps are satisfied"; q0 is initial and F = {qk}.
-Missing transitions reject (implicit dead state).
-"""
-
 from pyformlang.finite_automaton import DeterministicFiniteAutomaton
 
 

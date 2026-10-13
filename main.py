@@ -1,9 +1,15 @@
+import os
+
 from Automata.classifier import classify
+from CandidateLanguage.generator import build_profile
+from CandidateLanguage.parser import validate
+from CandidateLanguage.visualizer import to_markdown
 from Normalization.pipeline import SkillNormalizer
 from normalize_resume import SAMPLES, normalize_resume
 from resume_extractor import extract_complete_resume_info
 
 NORMALIZER = SkillNormalizer()
+OUTPUT_DIR = "output"
 
 
 def analyze(text):
@@ -29,7 +35,22 @@ def format_report(result):
 MENU = "\nResumeLens\n1. Analyze a résumé from a text file\n2. Analyze the sample résumés\n0. Exit"
 
 
-def run(ask=input, show=print):
+def screen(name, text, show, folder):
+    result = analyze(text)
+    show(format_report(result))
+    model, reason = validate(build_profile(name, result))
+    if model is None:
+        show(f"Profile REJECTED: {reason}")
+        return
+    markdown = to_markdown(model)
+    os.makedirs(folder, exist_ok=True)
+    path = os.path.join(folder, name.lower().replace(" ", "_") + ".md")
+    with open(path, "w", encoding="utf-8") as handle:
+        handle.write(markdown)
+    show(f"Profile VALID. Saved to {path}\n\n{markdown}")
+
+
+def run(ask=input, show=print, folder=OUTPUT_DIR):
     while True:
         show(MENU)
         option = ask("Option: ").strip()
@@ -43,10 +64,11 @@ def run(ask=input, show=print):
             except OSError:
                 show("File not found.")
                 continue
-            show(format_report(analyze(text)))
+            screen(ask("Candidate name: ").strip(), text, show, folder)
         elif option == "2":
             for name, text in SAMPLES.items():
-                show(f"\n{name}\n{format_report(analyze(text))}")
+                show(f"\n{name}")
+                screen(name, text, show, folder)
         else:
             show("Invalid option.")
 
